@@ -2,9 +2,18 @@
     padding: 0 5vw;
 } 
 
+.price {
+    font-size: 2rem;
+}
+
+.card-title {
+    font-size: 4rem;
+    font-weight: bolder;
+}
+
 .course-container {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +23,8 @@
 .course-element {
     width: 80%;
     height: 50vh;
-    border: 2px solid #000000;
+    background: linear-gradient(to top, #fefcea, #C0C0C0);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
