@@ -1,0 +1,39 @@
+version: "3.7"
+networks: 
+    mongo_test:
+        driver: bridge
+        name: mongo_test 
+
+volumes:
+    mongo_data:
+
+services:
+    mongo_nikita: 
+        env_file: .env.local
+        image: mongo:4-bionic
+        restart: always
+        volumes:
+            - mongo_data:/data/db
+            - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+        ports:
+            - 27017:27017
+        environment:
+            - MONGO_DATA_DIR=/data/db
+            - MONGO_LOG_DIR=/dev/null
+            - MONGO_INITDB_ROOT_USERNAME=nikita_user
+            - MONGO_INITDB_ROOT_PASSWORD=nikos_99
+            - MONGO_INITDB_DATABASE=nikita_mongo
+        networks: 
+            - mongo_test 
+    web_express: 
+        env_file: .env.local
+        container_name: web_express_nikita
+        image: node:12
+        ports: 
+            - 4000:80
+        volumes: 
+            - .:/app
+        working_dir: /app
+        command: ["node_modules/.bin/nodemon", "index.js"]
+        networks: 
+            - mongo_test

@@ -6,6 +6,12 @@
     font-size: 2rem;
 }
 
+.card-action {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .card-title {
     font-size: 4rem;
     font-weight: bolder;
